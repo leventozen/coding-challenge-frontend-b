@@ -23,7 +23,10 @@ module.exports = {
         https: false
     },
     plugins: [
-        new webpack.EnvironmentPlugin( { ...process.env } ),
+        new webpack.DefinePlugin({
+            "process.env.BASE_URL": JSON.stringify("https://napi.busbud.com"),
+            "process.env.AUTH_TOKEN": JSON.stringify("PARTNER_BaASYYHxTxuOINEOMWq5GA")
+        }),
         new HtmlWebpackPlugin({
             template: "src/index.html"
         })

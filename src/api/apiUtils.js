@@ -4,7 +4,7 @@ export async function handleResponse(response) {
         const error = await response.text();
         throw new Error(error);
     }
-    throw new Error("Problem was occured.");
+    throw new Error("Unresolved problem was occured.");
 }
 
 export function handleError(error) {
