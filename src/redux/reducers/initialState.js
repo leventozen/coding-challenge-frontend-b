@@ -1,4 +1,5 @@
 export default {
     data: {},
-    apiCallsInProgress: 0
+    apiCallsInProgress: 0,
+    isCompleted: false
 };

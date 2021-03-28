@@ -6,13 +6,32 @@ export function loadDataSuccess(data) {
     return { type: types.LOAD_GET_DATA_SUCCESS, data };
 }
 
-export function loadData() {
+export function loadPollDataSuccess(data) {
+    return { type: types.LOAD_POLL_DATA_SUCCESS, data };
+}
+
+export function loadData(origin, destination, outboundDate) {
     return function(dispatch) {
         dispatch(beginApiCall());
         return dataApi
-            .getData('f2m673', 'f25dvk', '2021-04-26', { adult: 1})
+            .getData(origin, destination, outboundDate)
             .then(data => {
                 dispatch(loadDataSuccess(data));
+            })
+            .catch(error => {
+                dispatch(apiCallError(error));
+                throw error;
+            });
+    };
+}
+
+export function loadPollingData(origin, destination, outboundDate) {
+    return function(dispatch) {
+        dispatch(beginApiCall());
+        return dataApi
+            .poll_getData(origin, destination, outboundDate)
+            .then(data => {
+                dispatch(loadPollDataSuccess(data));
             })
             .catch(error => {
                 dispatch(apiCallError(error));

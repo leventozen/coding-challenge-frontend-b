@@ -1,1 +1,1 @@
-export { default } from './DeparturesContainer.js';
+export { default } from './DepartureList.js';

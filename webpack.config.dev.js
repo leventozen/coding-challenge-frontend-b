@@ -23,9 +23,7 @@ module.exports = {
         https: false
     },
     plugins: [
-        new webpack.DefinePlugin({
-            "process.env.API_URL": JSON.stringify("http://localhost:3001")
-        }),
+        new webpack.EnvironmentPlugin( { ...process.env } ),
         new HtmlWebpackPlugin({
             template: "src/index.html"
         })
@@ -38,8 +36,8 @@ module.exports = {
                 use: ["babel-loader", "eslint-loader"]
             },
             {
-                test: /(\.css)$/,
-                use: ["style-loader", "css-loader"]
+                test: /\.scss$/,
+                use: ['style-loader', 'css-loader', 'sass-loader']
             }
         ]
     }

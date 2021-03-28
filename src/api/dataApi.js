@@ -1,12 +1,14 @@
 import { handleResponse, handleError, createQueryParams } from "./apiUtils";
-const baseUrl = "https://napi.busbud.com/" || process.env.REACT_APP_BASE_URL
+const baseUrl = "https://napi.busbud.com" || process.env.REACT_APP_BASE_URL
 
+console.log(process.env.REACT_APP_BASE_URL)
+console.log(process.env.REACT_APP_AUTH_TOKEN)
 /*
 * GET departures by origin, destination and outbound_date
 */
-export function getData(origin, destination, outbound_date, params) {
-    const queryParams = createQueryParams(params)
-    const path = `${baseUrl + 'x-departures/' + origin + '/' + destination + '/' + outbound_date + '?' + queryParams }`
+export function getData(origin, destination, outbound_date, _) {
+    const queryParams = createQueryParams({ adult: 1})
+    const path = `${baseUrl}/x-departures/${origin}/${destination}/${outbound_date.toISOString().slice(0, 10)}?${queryParams}`
 
     const options = {
         method: 'GET',
@@ -25,10 +27,10 @@ export function getData(origin, destination, outbound_date, params) {
 * Poll GET departures by origin, destination and outbound_date
 */
 
-export function poll_getData(origin, destination, outbound_date, params) {
-    const queryParams = createQueryParams(params)
-    const path = `${baseUrl + 'x-departures/' + origin + '/' + destination + '/' + outbound_date + '/poll/?' + queryParams }`
-    
+export function poll_getData(origin, destination, outbound_date, _) {
+    const queryParams = createQueryParams({ adult: 1})
+    const path = `${baseUrl}/x-departures/${origin}/${destination}/${outbound_date.toISOString().slice(0, 10)}/poll/?${queryParams}`
+
     const options = {
         method: 'GET',
         headers: {

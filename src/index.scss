@@ -1,0 +1,11 @@
+@import "~bootstrap/scss/bootstrap";
+@import "~bootstrap/scss/bootstrap-grid";
+@import "~bootstrap/scss/variables";
+@import "~bootstrap/scss/mixins/breakpoints";
+
+$background: #ec7168;
+
+body {
+  background-color: $background;
+  font-family: 'Fire Sans', sans-serif;
+}
