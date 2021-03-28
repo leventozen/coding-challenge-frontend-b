@@ -1,0 +1,5 @@
+export const LOAD_GET_DATA_SUCCESS = "LOAD_GET_DATA_SUCCESS";
+
+export const BEGIN_API_CALL = "BEGIN_API_CALL";
+export const API_CALL_ERROR = "API_CALL_ERROR";
+
